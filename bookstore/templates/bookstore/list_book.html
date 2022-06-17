@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h3>The following Books are available in our store.</h3>
+  <ul>
+      
+      {% for book in book_list %}
+        <li>
+            {{ book.id }} - {{ book }} | 
+            <a class= "text-success" href={{ book.get_absolute_url }}>Detail</a> -
+            <a class= "text-primary" href={% url 'edit_book' book.id %}>Edit</a> -
+            <a class= "text-danger" href= {% url 'delete_book' book.id %} >Delete</a>
+        </li>
+      {% endfor %}
+  </ul>
+{% endblock body %}

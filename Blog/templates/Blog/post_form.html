@@ -1,0 +1,23 @@
+{% extends "base_blog.html" %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+    <div class="content-section mt-3">
+        <form action="" method="post">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Blog Post</legend>
+              {{ form | crispy }}
+            </fieldset>
+            <div class="form-group">
+                {{ form.pk  }}
+                {% if form.id %}
+                    <button class="btn btn-outline-success" type="submit">Update Post</button>
+                {% else %}
+                    <button class="btn btn-outline-info" type="submit">Save Post</button>
+
+                {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock body %}

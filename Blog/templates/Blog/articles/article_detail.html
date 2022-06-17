@@ -1,0 +1,15 @@
+{% extends "base_blog.html" %}
+
+{% block title %}
+    Blog :: {{ object.title }}
+  
+{% endblock title %}
+{% block body %}
+    <h2>The requested article:</h2>
+    <p>Article Number: <b>{{ object.pk }}</b></p>
+    <h4>
+        {{ object.title }}
+    </h4>
+    <p>{{ object.content }}</p>
+  
+{% endblock body %}

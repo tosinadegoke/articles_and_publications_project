@@ -1,0 +1,22 @@
+{% extends "base_blog.html" %}
+
+{% block body %}
+<article class="media content-section mt-3">
+    <div class="media_body">
+        <div class="article-metadata">
+              <h4 class=" mb-2 text-danger">Sure to delete post?</h4>
+              
+          </div>
+          <h2 class="article-title">{{ object.title }}</h2>
+          <p class="article-content">{{ object.content }}</p>
+          <div >
+            <form action="" method="post">
+                {% csrf_token %}
+                <button class="btn btn-danger" type="submit">Delete</button>
+                <a class="btn btn-info" href="{% url 'post_list' %}">Take me back</a>
+            </form>
+        </div>
+      </div>
+  </article>
+  
+{% endblock body %}

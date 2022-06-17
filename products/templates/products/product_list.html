@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+ 
+{% block body %}
+  <h4>Products in Stock</h4>
+  {{ object_list }}
+  <ul>
+      {% for obj in  object_list %}
+        <li>
+            {{ obj.id }} - {{ obj.title }} 
+                <a class="text-success" href={{ obj.get_absolute_url }}>Details</a> - 
+                <!-- <a class="text-success" href={% url 'product_details' obj.id %}>Details</a> -  -->
+                <a class="text-primary" href={% url 'product_update' obj.id %}>Edit</a> - 
+                <a class="text-danger" href={% url 'product_delete' obj.id %}>Delete</a>
+            <!-- {{ obj.title }} - {{ obj.id }} <a href='/products/{{ obj.id }}/delete'>Delete</a> -->
+        </li>
+      {% endfor %}
+  </ul>
+{% endblock body %}

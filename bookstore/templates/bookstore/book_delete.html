@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <form } method="post">
+        {% csrf_token %}
+        <h5>Sure to delete <span class="text-warning">{{ object.title }}</span> from the Bookstore?</h5>
+        Title: <h3>{{ object.title }}</h3>
+        <p>Author: {{ object.author }}</p>
+        <input type="submit" value="Yes" class="btn btn-danger">
+        <a class="btn btn-dark" href={% url 'list_book' %}>Cancel</a>
+    </form>
+{% endblock body %}

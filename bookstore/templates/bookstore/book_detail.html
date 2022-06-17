@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <h6 class="my-4">Requested details about the book <span class="text-warning">{{ book_object.title }}</span></h6>
+
+    <h4>{{ book_object.title }}</h4>
+    <h5>{{ book_object.author }}</h5>
+    <p>{{ book_object.released_date }} - {{ book_object.price }} </p>  
+    
+{% endblock body %}

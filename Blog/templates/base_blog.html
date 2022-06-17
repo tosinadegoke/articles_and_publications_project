@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'accounts/css/bootstrap.min.css' %}>
+    <link rel="stylesheet" href={% static 'Blog/main.css' %}>
+    <title>
+        {% block title %}
+          
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    <header class="site-header">
+        {% include "nav_blog.html" %}
+    </header>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} {% if message.tags == 'error' %}
+              alert-danger
+            {% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class='container'>
+        <main role="main" class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% block body %}
+                      
+                    {% endblock body %}
+                </div>
+                <div class="col-md-4">
+                    <div class="body-section">
+                        <h3>Our Sidebar</h3>
+                        <p class="text-muted">
+                            You can put any information here you'd like.
+                            <ul class="list-group">
+                                <li class="list-group-item list-group-light">Lastest Post</li>
+                                <li class="list-group-item list-group-light">Annoucement</li>
+                                <li class="list-group-item list-group-light">Calendars</li>
+                                <li class="list-group-item list-group-          light">etc</li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src= {% static "my_page/js/jquery-3.5.1.js" %}></script>
+    <script src= {% static "my_page/js/bootstrap.bundle.js" %}></script>
+</body>
+</html>

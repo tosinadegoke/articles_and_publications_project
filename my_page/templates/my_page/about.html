@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {{ my_text }}
+{% endblock title %}
+
+{% block body %}
+    <h3>
+        Today's date: {% now "jS F Y " %}
+    </h3>
+    <h1>About Us</h1>
+    <p>This is a template</p>
+    <p>The number is: <b>{{ number }}</b></p>
+    <ul>
+        {% for list in my_list %}
+            {% if list == 2 %}
+              <li>{{ forloop.counter }} - {{ list|add:16 }}</li>
+            {% elif list == 'dwds' %}
+                <li>This is a string</li>
+            {% else %}
+                <li>{{ forloop.counter }}-{{list}}</li>
+            
+            {% endif %}
+        {% endfor %}
+    </ul>
+   {% lorem 1 p random %} 
+  <p>Maximum file sisze is: {{ value|filesizeformat }}</p>
+  <p>{{ blog_title | slugify }}</p>
+  <p>Blog title - {{ blog_title | title |lower| capfirst }}</p>
+{% endblock body %}

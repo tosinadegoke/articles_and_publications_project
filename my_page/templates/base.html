@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'accounts/css/bootstrap.min.css' %}>
+    <title>
+        {% block title %}
+          
+        {% endblock title %}
+    </title>
+</head>
+<body>
+    {% include "nav.html" %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} {% if message.tags == 'error' %}
+              alert-danger
+            {% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class='container'>
+        <!-- <div class='row '>
+            <div class='col-md-6 '> -->
+                {% block body %}
+                  
+                {% endblock body %}
+                
+            <!-- </div>
+        </div> -->
+    </div>
+    
+    <script src= {% static "my_page/js/jquery-3.5.1.js" %}></script>
+    <script src= {% static "my_page/js/bootstrap.bundle.js" %}></script>
+</body>
+</html>
