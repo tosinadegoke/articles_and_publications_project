@@ -20,7 +20,7 @@ from .views_func_based import (
 
 urlpatterns = [
     path('', PostListView.as_view(), name="post_list"),
-    path('user/<str:username>', PostListView.as_view(), name="user_posts"),
+    path('user/<str:username>', UserPostListView.as_view(), name="user_posts"),
     path('<int:pk>/details/', PostDetailView.as_view(), name= "post_detail"),
     path('create/', PostCreateView.as_view(), name= "post_create"),
     path('<int:pk>/update/', PostUpdateView.as_view(), name= "post_update"),
