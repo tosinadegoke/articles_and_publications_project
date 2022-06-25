@@ -89,9 +89,8 @@ class UserPostListView(ListView):
     paginate_by = 4                         # it sets the number of items on each page
 
     def get_queryset(self):
-        print('helllooooo there')
         user = get_object_or_404(User, username = self.kwargs.get('username'))  # Get the user
-        return Post.object.filter(author=user).order_by('-date_posted')         # Filter the Posts to the ones by the author
+        return Post.objects.filter(author=user).order_by('-date_posted')         # Filter the Posts to the ones by the author
 
 
 class PostDetailView(DetailView):

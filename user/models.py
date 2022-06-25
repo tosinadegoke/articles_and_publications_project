@@ -14,8 +14,8 @@ class Profile(models.Model):
     def __str__(self):
         return f'{self.user.username} Profile'
 
-    def save(self):
-        super().save()    #call the Base or Parent class to save data to database
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)    #call the Base or Parent class to save data to database
 
         img = Image.open(self.image.path)
 

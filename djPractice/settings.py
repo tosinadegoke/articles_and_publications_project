@@ -9,9 +9,13 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
+import environ
 import os
 
+
+# Initialise environment variables
+env = environ.Env()
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -133,7 +137,16 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    #location of uploaded files on the filesystem
 MEDIA_URL = '/media/'   #how the files are accessed in the browser
 
-LOGIN_REDIRECT_URL = 'article_home'
+LOGIN_REDIRECT_URL = "post_list"
 LOGIN_URL = 'login'
 
 CRISPY_TEMPLATE_PACK ='bootstrap4'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tosinadegoke@gmail.com'
+EMAIL_HOST_PASSWORD = 'itcomtech1'
+# EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')

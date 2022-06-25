@@ -25,6 +25,10 @@ urlpatterns = [
     #   Create path for the Login and Logout system
     path('login/', auth_views.LoginView.as_view(template_name = 'user/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'user/logout.html'), name = 'logout'),
+    path('password-reset/', auth_views.PasswordResetView.as_view(template_name = 'user/password_reset.html'), name = 'password_reset'),
+    path('password-reset/done/', auth_views.PasswordResetDoneView.as_view(template_name = 'user/password_reset_done.html'), name = 'password_reset_done'),     # route to the page for succesful Password reset
+    path('password-reset-confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name = 'user/password_reset_confirm.html'), name = 'password_reset_confirm'),     # route to the page for succesful Password reset
+    path('password-reset/complete/', auth_views.PasswordResetCompleteView.as_view(template_name = 'user/password_reset_complete.html'), name = 'password_reset_complete'),     # route to the page for succesful Password reset
     
     path('admin/', admin.site.urls),
     path('account/', include('accounts.urls')),
@@ -42,4 +46,9 @@ urlpatterns = [
 if settings.DEBUG:      # if in Development mode
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-
+    """
+    1   - Submit email form                             PasswordResetView.as_view()
+    2   - Email sent success message                    PasswordResetDoneView.as_view()
+    1   - Link to password reset form in Email          PasswordResetConfirmView.as_view()
+    1   - Password successfully changed message         PasswordResetcompleteView.as_view()
+    """

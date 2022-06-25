@@ -1,5 +1,3 @@
-from ast import Pass
-from tkinter import CASCADE
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
